@@ -19,7 +19,7 @@ export const Features = () => {
     return (
         <>
             <div className="bg-black text-white py-[72px] sm:py-24">
-                <div className="container">
+                <div className="container overflow-y-hidden">
                     <h2 className="text-center font-bold text-5xl tracking-tighter sm:text-6xl">
                         Everything you need.
                     </h2>

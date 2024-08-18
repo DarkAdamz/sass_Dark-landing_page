@@ -1,6 +1,8 @@
+"use client";
 import ArrowIcon from "@/assets/icons/arrow-w.svg";
 import CursorImage from "@/assets/images/cursor.png";
 import messageImage from "@/assets/images/message.png";
+import {motion} from "framer-motion";
 import Image from "next/image";
 export const Hero = () => {
     return (
@@ -24,26 +26,43 @@ export const Hero = () => {
                                 One task <br />
                                 at a time.
                             </h1>
-                            <Image
-                                src={CursorImage}
-                                alt="cusor"
-                                height={200}
-                                width={200}
-                                className="absolute right-[500px] top-[108px] hidden sm:inline "
-                            />
-                            <Image
-                                src={messageImage}
-                                alt="Message Image"
-                                height={200}
-                                width={200}
-                                className="absolute top-[56px] left-[498px] hidden sm:inline "
-                            />
+                            <motion.div
+                                className="absolute right-[500px] top-[108px] hidden sm:inline"
+                                drag
+                                //dragSnapToOrigin
+                            >
+                                <Image
+                                    src={CursorImage}
+                                    alt="cusor"
+                                    height={200}
+                                    width={200}
+                                    className="max-w-none cursor-pointer"
+                                    draggable="false"
+                                />
+                            </motion.div>
+                            <motion.div
+                                className="absolute top-[56px] left-[498px] hidden sm:inline"
+                                drag
+                                //dragSnapToOrigin
+                            >
+                                <Image
+                                    src={messageImage}
+                                    alt="Message Image"
+                                    height={200}
+                                    width={200}
+                                    className="max-w-none cursor-pointer"
+                                    draggable="false"
+                                />
+                            </motion.div>
                         </div>
                     </div>
                     <div className="flex justify-center">
                         <p className="text-center text-xl mt-8 max-w-md">
                             Celebrate the joy of accomplishment with an app designed to track your progress, motivate
                             your efforts and celebrate your success.
+                            <span className="text-center text-sm mt-8 max-w-md hidden sm:block">
+                                (Feel free to drag the shapes around 😁)
+                            </span>
                         </p>
                     </div>
                     <div className="flex justify-center mt-8">

@@ -1,4 +1,5 @@
 "use client";
+import {motion, AnimatePresence} from "framer-motion";
 import PlusIcon from "@/assets/icons/plus.svg";
 import MinusIcon from "@/assets/icons/minus.svg";
 import clsx from "clsx";
@@ -25,11 +26,34 @@ const items = [
 const AccordionItem = ({question, answer}: {question: string; answer: string}) => {
     const [isOpen, setIsOpen] = React.useState(false);
     return (
-        <div key={question} className="py-7 border-b border-white/30" onClick={() => setIsOpen(!isOpen)}>
+        <div key={question} className="py-7 border-b border-white/30 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
             <div className="flex w-full items-centerflex-1 text-lg font-bold">
                 <span>{isOpen ? <MinusIcon /> : <PlusIcon />}</span> {question}
             </div>
-            <div className={clsx("mt-4", {hidden: !isOpen, "": isOpen === true})}>{answer}</div>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        // className={clsx("mt-4", {hidden: !isOpen, "": isOpen === true})}
+                        // initial={{
+                        //     opacity: 0,
+                        //     height: 0,
+                        //     marginTop: 0,
+                        // }}
+                        animate={{
+                            opacity: 1,
+                            height: "auto",
+                            marginTop: "16px",
+                        }}
+                        exit={{
+                            opacity: 0,
+                            height: 0,
+                            marginTop: 0,
+                        }}
+                    >
+                        {answer}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

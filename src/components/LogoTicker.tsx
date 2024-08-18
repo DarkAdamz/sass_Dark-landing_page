@@ -1,3 +1,5 @@
+"use client";
+import {motion} from "framer-motion";
 import acmeLogo from "../assets/images/acme.png";
 import quantumLogo from "../assets/images/quantum.png";
 import echoLogo from "../assets/images/echo.png";
@@ -23,11 +25,23 @@ export const LogoTicker = () => {
                     <h2 className="text-xl text-center text-white/60">Trusted by the world's most innovative Team.</h2>
 
                     <div className="overflow-hidden mt-9 before:content-[' '] after:contents-[''] before:absolute after:absolute before:h-full after:h-full before:w-5 after:w-5 relative before:left-0 after:right-0 before:top-0 after:top-0 before:bg-[linear-gradient(to_right,#000,rgb(0,0,0,0))] after:bg-[linear-gradient(to_left,#000,rgb(0,0,0,0))] ">
-                        <div className="flex gap-16">
+                        <motion.div
+                            className="flex gap-16 flex-none pr-16"
+                            transition={{
+                                duration: 7,
+                                ease: "linear",
+                                repeat: Infinity,
+                            }}
+                            initial={{translateX: 0}}
+                            animate={{translateX: "-50%"}}
+                        >
                             {images.map(({id, src, alt}) => (
                                 <Image src={src} alt={alt} className="flex-none= h-8 " key={id} />
                             ))}
-                        </div>
+                            {images.map(({id, src, alt}) => (
+                                <Image src={src} alt={alt} className="flex-none= h-8 " key={id} />
+                            ))}
+                        </motion.div>
                     </div>
                 </div>
             </div>
